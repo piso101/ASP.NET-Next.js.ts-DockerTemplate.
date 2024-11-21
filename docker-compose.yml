@@ -1,0 +1,39 @@
+services:
+  backend:
+    build:
+      context: ./BackEnd
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8080:8080"  
+      - "8081:8081"  
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./FrontEnd
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./FrontEnd:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      CHOKIDAR_USEPOLLING: "true"
+      NEXT_PUBLIC_PORT: 3000
+      NEXT_PUBLIC_HOST: 0.0.0.0
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
