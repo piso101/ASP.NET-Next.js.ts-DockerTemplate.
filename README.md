@@ -15,7 +15,7 @@ Project made for requitment task from HappyTeam
 
 To deploy this project locally
 
-Enter HappyBackEnd folder:
+Enter folder:
 ```bash
 cd (where the project is placed)
 ```
