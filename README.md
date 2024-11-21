@@ -1,8 +1,7 @@
 
 # TEMPLATE
 
-Project made for requitment task from HappyTeam
-
+Template for asp.net backend, next.js.ts frontend and postgres:15 Database web applications.
 
 
 
