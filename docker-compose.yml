@@ -2,13 +2,14 @@ services:
   backend:
     build:
       context: ./BackEnd
-      dockerfile: Dockerfile
     container_name: backend
     ports:
-      - "8080:8080"  
-      - "8081:8081"  
+      - "8080:8080"
     depends_on:
       - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydatabase;Username=myuser;Password=mypassword
 
   frontend:
     build:
